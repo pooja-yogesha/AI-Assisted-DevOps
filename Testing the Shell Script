@@ -1,0 +1,15 @@
+chmod +x vm_health_check.sh 
+./vm_health_check.sh
+./vm_health_check.sh --explain
+
+-- HIGH CPU USAGE ---
+yes > /dev/null & #CPU intensive process
+Run the Script
+killall yes
+-- HIGH MEMORY USAGE ---
+sudo apt install stress
+stress --vm 1 --vm-bytes 80%
+-- High Disk Usage ----
+fallocate -l 10G testfile
+Run the script to check if it detects high disk usage. After testing, remove the file:
+rm testfile
